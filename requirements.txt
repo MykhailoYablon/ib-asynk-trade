@@ -1,0 +1,5 @@
+ib_async==2.0.1
+tzdata==2025.2
+aeventkit==2.1.0
+nest-asyncio==1.6.0
+numpy==2.3.2
