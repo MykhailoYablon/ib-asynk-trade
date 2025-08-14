@@ -60,11 +60,9 @@ def log_breakout(ib, symbol, bar: RealTimeBar, opening_range_high: float):
         f.write(f"{bar.time} {symbol} broke out, closed at {bar.close}, which was above {opening_range_high}\n")
 
 async def monitor_with_breakout(ib: IB, symbol: str, opening_range_high: float, handler=log_breakout):
-    ticker = ib.reqHistoricalDataAsync(
-        contract = Stock(symbol, "SMART", "USD"),
-        endDateTime="",
-        durationStr="1 D",
-        barSizeSetting="5 mins",
+    ticker = ib.reqRealTimeBars(
+        Stock(symbol, "SMART", "USD"),
+        barSize=5,
         whatToShow="TRADES",
         useRTH=True
     )
